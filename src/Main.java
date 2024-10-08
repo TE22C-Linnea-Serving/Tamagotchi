@@ -10,19 +10,19 @@ public class Main {
 
         Tamagotchi tamagotchi = new Tamagotchi(name, 0, 0);
 
+
         while(tamagotchi.getAlive()){
             System.out.println("Actions:\n1. Teach word\n2. Greet " + name + "\n3. Feed\n4. Do nothing");
             int action = scanner.nextInt();
             switch (action) {
                 case 1:
-                    System.out.println("You teach " + name + " a word!");
                     tamagotchi.reduceBoredom();
-                    System.out.println(tamagotchi.getBoredom());
+                    String teachWord = scanner.nextLine();  //Does not work
+                    tamagotchi.teach(teachWord);
                     break;
                 case 2:
                     System.out.println("You greet " + name + "!");
                     tamagotchi.reduceBoredom();
-                    System.out.println(tamagotchi.getBoredom());
                     break;
                 case 3:
                     System.out.println("You feed " + name + "!");

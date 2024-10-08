@@ -8,7 +8,8 @@ public class Tamagotchi {
     public String name;
     private Random generator = new Random();
 
-    ArrayList<Object> words =new ArrayList<>();
+    ArrayList<String> words =new ArrayList<>();
+
 
 
     Tamagotchi(String name, int hunger, int boredom) {
@@ -16,6 +17,7 @@ public class Tamagotchi {
         this.hunger = hunger;
         this.boredom = boredom;
         generator.nextInt(10);
+        words.add("hej");
     }
 
     public void tick(){
@@ -51,7 +53,11 @@ public class Tamagotchi {
         }
     }
 
-
+    public void teach(String word){
+        System.out.println("What word do you want to teach?");
+        words.add(word);
+        System.out.println(word);
+    }
 
     public void speak(){
 
