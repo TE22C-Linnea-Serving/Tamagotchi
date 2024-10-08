@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Tamagotchi {
-    private int hunger = 0;
-    private int boredome = 0;
+    private int hunger;
+    private int boredom;
     private boolean isAlive = true;
     public String name;
     private Random generator = new Random();
@@ -11,25 +11,25 @@ public class Tamagotchi {
     ArrayList<Object> words =new ArrayList<>();
 
 
-    Tamagotchi(String name, int hunger, int boredome) {
+    Tamagotchi(String name, int hunger, int boredom) {
         this.name = name;
         this.hunger = hunger;
-        this.boredome = boredome;
+        this.boredom = boredom;
         generator.nextInt(10);
     }
 
     public void tick(){
         hunger++;
-        boredome++;
+        boredom++;
 
-        if(hunger<=10 && boredome<=10){
+        if(hunger<=10 && boredom<=10){
             isAlive = true;
         }else if(hunger>=10) {
             isAlive = false;
             System.out.println(name + " died from hunger!");
-        }else if(boredome>=10){
+        }else{
             isAlive = false;
-            System.out.println(name + " died from boredome!");
+            System.out.println(name + " died from boredom!");
         }
 
     }
@@ -43,16 +43,22 @@ public class Tamagotchi {
         }
     }
 
-    public void reduceBoredome(){
-        if(boredome<=0) {
+    public void reduceBoredom(){
+        if(boredom<=0) {
             System.out.println(name + " is not bored");
         }else{
-            boredome--;
+            boredom--;
         }
     }
 
+
+
     public void speak(){
 
+    }
+
+    public int getBoredom() {
+        return boredom;
     }
 
     public boolean getAlive() {

@@ -15,12 +15,14 @@ public class Main {
             int action = scanner.nextInt();
             switch (action) {
                 case 1:
-                    tamagotchi.reduceBoredome();
                     System.out.println("You teach " + name + " a word!");
+                    tamagotchi.reduceBoredom();
+                    System.out.println(tamagotchi.getBoredom());
                     break;
                 case 2:
                     System.out.println("You greet " + name + "!");
-                    tamagotchi.reduceBoredome();
+                    tamagotchi.reduceBoredom();
+                    System.out.println(tamagotchi.getBoredom());
                     break;
                 case 3:
                     System.out.println("You feed " + name + "!");
