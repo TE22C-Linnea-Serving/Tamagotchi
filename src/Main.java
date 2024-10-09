@@ -14,25 +14,30 @@ public class Main {
         while(tamagotchi.getAlive()){
             System.out.println("Actions:\n1. Teach word\n2. Greet " + name + "\n3. Feed\n4. Do nothing");
             int action = scanner.nextInt();
+            scanner.nextLine();
             switch (action) {
                 case 1:
-                    tamagotchi.reduceBoredom();
-                    String teachWord = scanner.nextLine();  //Does not work
+                    System.out.println("What word do you want to teach " + name + "?:");
+                    String teachWord = scanner.nextLine();
+                    System.out.println();
                     tamagotchi.teach(teachWord);
                     break;
                 case 2:
                     System.out.println("You greet " + name + "!");
-                    tamagotchi.reduceBoredom();
+                    System.out.print(name + ": ");
+                    tamagotchi.speak();
                     break;
                 case 3:
-                    System.out.println("You feed " + name + "!");
                     tamagotchi.feed();
                     break;
                 case 4:
-                    System.out.println("You did nothing");
+                    System.out.println("You did nothing!");
                     break;
             }
+            System.out.println("Press ENTER to continue...");
+            scanner.nextLine();
             tamagotchi.tick();
+            tamagotchi.printStats();
         }
     }
 }

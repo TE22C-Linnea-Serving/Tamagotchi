@@ -17,7 +17,7 @@ public class Tamagotchi {
         this.hunger = hunger;
         this.boredom = boredom;
         generator.nextInt(10);
-        words.add("hej");
+        words.add("Hello!");
     }
 
     public void tick(){
@@ -37,34 +37,43 @@ public class Tamagotchi {
     }
 
     public void feed(){
-        System.out.println("You are feeding " + name);
-        if(hunger<=0){
-            System.out.println(name + " is not hungry");
-        }else{
-            hunger--;
+        for(int i = 0; i < 3; i++) {
+            if (hunger > 0) {
+                hunger--;
+            }
         }
+        System.out.println("You are feeding " + name);
+        System.out.println();
     }
 
     public void reduceBoredom(){
-        if(boredom<=0) {
-            System.out.println(name + " is not bored");
-        }else{
-            boredom--;
+        for(int i = 0; i < 3; i++) {            //Eftersom tick(); ökar boredom, måste man minsta den med 2, för att den faktiskt ska gå ner
+            if (boredom > 0) {
+                boredom--;
+            }
         }
     }
 
     public void teach(String word){
-        System.out.println("What word do you want to teach?");
+        reduceBoredom();
+        System.out.println(name + " learned: " + word);
         words.add(word);
-        System.out.println(word);
+        System.out.println();
     }
 
     public void speak(){
-
+        reduceBoredom();
+        System.out.println(words.get(generator.nextInt(words.size())));         //??
+        System.out.println();
     }
 
-    public int getBoredom() {
-        return boredom;
+    public void printStats(){
+        System.out.println("Boredom: " + boredom);
+        System.out.println("Hunger: " + hunger);
+        if(isAlive) {
+            System.out.println(name +" is alive");
+        }
+        System.out.println();
     }
 
     public boolean getAlive() {
